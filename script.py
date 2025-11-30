@@ -1,18 +1,13 @@
-import requests
-import os 
+import os
 from dotenv import load_dotenv
+from massive import RESTClient
 
+from massive import RESTClient
 
-# Load environment variables from .env
-load_dotenv()
+# Hardcode it for testing (NOT recommended for production)
+client = RESTClient(api_key="VOID")
 
-
-
-
-
-# Use it in your URL
-URL = f"https://api.massive.com/v3/reference/dividends?apiKey={'MASSIVE_API_KEY'}"
-
-# Make your request
-response = requests.get(URL)
-print(response.json())
+# Test if this works
+ticker = "AAPL"
+trade = client.get_last_trade(ticker=ticker)
+print(trade)
